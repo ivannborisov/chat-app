@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+
 import './Registration.css';
 
 class Registration extends React.Component {
@@ -8,15 +10,10 @@ class Registration extends React.Component {
  
         this.state = {
             username: '',
-            password: '' 
+            password: '',
+            isRegSuccessfull: null,
+            error: null
         };
-    }
-
-    handleSubmit () {
-        console.log(this.state.username)
-        console.log(this.state.password)
-
-        console.log('Submitted')
     }
 
     handleChangeUsername = (e) => {
@@ -39,6 +36,14 @@ class Registration extends React.Component {
         const content = await rawResponse.json();
 
         console.log(content);
+
+        if (content.success) 
+            this.setState({isRegSuccessfull: true});    
+        else {
+            this.setState({error: content.error});
+            this.setState({isRegSuccessfull: false});
+        }
+
     }
 
     render() {
@@ -50,6 +55,12 @@ class Registration extends React.Component {
                 <button onClick={() => {this.handleSubmit()}}>
                     Register
                 </button>
+                {this.state.isRegSuccessfull ? (
+                    <p>Successfull registration. Please log in  <Link to={`/`}> here  </Link></p>
+                ): null}
+                {this.state.error ? (
+                    <p>Login error: {this.state.error}</p>
+                ): null}
             </div>
         );
     }
