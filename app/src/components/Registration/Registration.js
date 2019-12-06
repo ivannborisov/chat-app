@@ -48,7 +48,7 @@ class Registration extends React.Component {
 
     render() {
         return (
-            <div> 
+            <div className="registerOuterContainer"> 
                 <h3>Registration</h3>
                 <input placeholder="Username" value={this.state.username} type="text" onChange={this.handleChangeUsername}/>
                 <input placeholder="Password" value={this.state.password} type="password" onChange={this.handleChangePassword} />

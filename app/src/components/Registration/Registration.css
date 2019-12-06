@@ -1,0 +1,13 @@
+.registerOuterContainer {
+    margin: 0 auto;
+    background: #f0f0f0;
+    border-radius: 10px;
+    width: 400px;
+    padding: 20px;
+}
+
+.registerOuterContainer input {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom:10px;
+} 

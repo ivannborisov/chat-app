@@ -81,10 +81,15 @@ class Home extends React.Component {
         
     render() {
         return (
-            <div>
+            <div className="homeOuterContainer">
                 {this.renderRedirect()}
-                <input placeholder="Username" value={this.state.username} type="text" onChange={this.handleChangeUsername}/>
-                <input placeholder="Password" value={this.state.password} type="password" onChange={this.handleChangePassword} />
+                <h1>Chat app</h1>
+                <p>
+                    <input placeholder="Username" value={this.state.username} type="text" onChange={this.handleChangeUsername}/>
+                </p>
+                <p>
+                    <input placeholder="Password" value={this.state.password} type="password" onChange={this.handleChangePassword} />
+                </p>
                 <button onClick={() => {this.handleSubmit()}}>
                     Log in
                 </button>

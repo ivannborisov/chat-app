@@ -20,8 +20,6 @@ const Chat = ({location}) => {
 
     const SERVER_ADDRESS = process.env.SERVER_ADDRESS || 'localhost:5000';
 
-
-
     useEffect(() => {
         const  room  = queryString.parse(location.search).room || 'family' ;
         const token = getCookie('token');
@@ -59,7 +57,6 @@ const Chat = ({location}) => {
         if (message) {
             socket.emit('sendMessage', {room, message}, () => {
                 setMessage('')
- 
             });
         }
     }
@@ -71,14 +68,17 @@ const Chat = ({location}) => {
     }
 
     return (
-        <div>
+        <div className="chatOuterContainer">
             {renderErrorRedirect()}
 
-            <h1>Chat</h1>
-             
+            <h1>Chat app</h1>
+            <h3>Room: {room}</h3>
+            <h5>User: {username}</h5> 
             <RoomNav/>
-            <Messages messages={messages} currentUsername={username} />
-            <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />            
+            <div className="chatContainer">
+                <Messages messages={messages} currentUsername={username} />
+                <Input message={message} setMessage={setMessage} sendMessage={sendMessage} /> 
+            </div>           
         </div>
     )
 };

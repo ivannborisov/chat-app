@@ -5,7 +5,7 @@ import './Message.css';
 const Message = ({ message: { text, username }, currentUsername }) => {
   let isSentByCurrentUser = false;
   
-  const trimmedName = currentUsername.trim().toLowerCase();
+  const trimmedUsername = currentUsername.trim().toLowerCase();
 
   if(username === currentUsername) {
     isSentByCurrentUser = true;
@@ -15,8 +15,8 @@ const Message = ({ message: { text, username }, currentUsername }) => {
         isSentByCurrentUser
         ?
         (
-          <div>
-            <p><b>{trimmedName}</b></p>
+          <div className="message  ownMessage">
+            <p><b>{trimmedUsername}</b></p>
             <div>
               <p>{text}</p>
             </div>
@@ -24,13 +24,13 @@ const Message = ({ message: { text, username }, currentUsername }) => {
         )
         :
         (
-        <div>
-          <p>{username}</p>
-          <div>
-            <p>{text}</p>
+          <div className="message">
+            <p>{username}</p>
+            <div>
+              <p>{text}</p>
+            </div>
+            
           </div>
-          
-        </div>
         )
   );
 }
